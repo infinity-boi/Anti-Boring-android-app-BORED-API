@@ -62,6 +62,18 @@ public class MainActivity extends AppCompatActivity {
         mTextView3 = findViewById(R.id.textView8);
         mTextView4 = findViewById(R.id.textView10);
 
+
+        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup, null);
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        poph = popupView.findViewById(R.id.textView12);
+        pop = popupView.findViewById(R.id.popup_text);
+        //mProgressBar = popupView.findViewById(R.id.progressBar);
+        boolean focusable = true;
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
+
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,25 +84,12 @@ public class MainActivity extends AppCompatActivity {
         mButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View popupView = inflater.inflate(R.layout.popup, null);
-                int width = LinearLayout.LayoutParams.MATCH_PARENT;
-                int height = LinearLayout.LayoutParams.MATCH_PARENT;
-                poph = popupView.findViewById(R.id.textView12);
-                pop = popupView.findViewById(R.id.popup_text);
-                //mProgressBar = popupView.findViewById(R.id.progressBar);
-                boolean focusable = true;
 
-                final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
                 popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
                 new howto().execute();
+
             }
             });
-
-
-
-
-
     }
 
     public class BoredApiTask extends AsyncTask<Void, Void, String> {
