@@ -42,7 +42,9 @@ public class OpenAICompletionClient {
             OkHttpClient client = new OkHttpClient();
 
 
-            String requestBody = "{\"prompt\": \" How to be a good human\",\"max_tokens\":100} ";
+            String a = "How to be a good human being";
+            String requestBody = "{\"prompt\": \"" + a + "\",\"max_tokens\":100}";
+
             Request request = new Request.Builder()
                     .url(API_URL)
                     .post(RequestBody.create(JSON, requestBody))
