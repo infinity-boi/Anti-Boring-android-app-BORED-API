@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <View
+        android:id="@+id/rectangle_4"
+        android:layout_width="497dp"
+        android:layout_height="258dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="415dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="825dp"
+        android:background="@drawable/rectangle_4"
+        />
+</selector>
