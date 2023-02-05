@@ -25,21 +25,9 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
                 android:layout_marginBottom="15dp"
-                android:text="TextView"
+                android:text="Loading...."
                 android:textColor="#FAFAFA"
                 android:textSize="20sp" />
-
-            <ProgressBar
-                android:id="@+id/progressBar"
-                style="?android:attr/progressBarStyle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#B32F2F"
-                android:foregroundTint="#FFFFFF"
-                android:indeterminateTint="#FFFFFF"
-                android:progressBackgroundTint="#D11818"
-                android:progressTint="#FFFFFF"
-                android:secondaryProgressTint="#330505" />
 
             <TextView
                 android:id="@+id/popup_text"

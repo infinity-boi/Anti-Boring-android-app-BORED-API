@@ -20,6 +20,8 @@ public class OpenAICompletionClient {
     private static String activity;
 
 
+
+
     public static void makeApiCall(final OpenAICallback callback) {
         new OpenAITask(callback).execute();
     }
