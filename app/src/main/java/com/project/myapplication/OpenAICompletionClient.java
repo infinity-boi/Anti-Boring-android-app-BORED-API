@@ -2,11 +2,8 @@ package com.project.myapplication;
 
 
 import java.io.IOException;
-import java.io.InputStream;
 
 
-import okhttp3.Call;
-import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,18 +17,24 @@ public class OpenAICompletionClient {
     private static final String API_KEY = "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";
     private static final String API_URL = "https://api.openai.com/v1/engines/text-davinci-003/completions";
     private static final MediaType JSON = MediaType.get("application/json; charset=utf-8");
+    private static String activity;
+
 
     public static void makeApiCall(final OpenAICallback callback) {
         new OpenAITask(callback).execute();
     }
+    public OpenAICompletionClient(String activity){
+        OpenAICompletionClient.activity =activity;
+    }
+
 
     public interface OpenAICallback {
         void onResult(String results);
     }
 
     private static class OpenAITask extends AsyncTask<Void, Void, String> {
-        private OpenAICallback callback;
-        private String activity;
+        private final OpenAICallback callback;
+
 
         OpenAITask(OpenAICallback callback) {
             this.callback = callback;
@@ -42,8 +45,8 @@ public class OpenAICompletionClient {
             OkHttpClient client = new OkHttpClient();
 
 
-            String a = "How to be a good human being";
-            String requestBody = "{\"prompt\": \"" + a + "\",\"max_tokens\":100}";
+
+            String requestBody = "{\"prompt\": \"Five points on How to " + activity + "\",\"max_tokens\":100}";
 
             Request request = new Request.Builder()
                     .url(API_URL)

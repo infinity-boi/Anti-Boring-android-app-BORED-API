@@ -1,4 +1,5 @@
 package com.project.myapplication;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -35,8 +36,11 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextView2;
     private TextView mTextView3;
     private TextView mTextView4;
+    private TextView poph;
     private TextView pop;
     private static String completedText;
+    private static String activity;
+    private static View mProgressBar;
 
 
 
@@ -71,11 +75,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new BoredApiTask().execute();
                 vib.vibrate(50);
+
 
 
             }
@@ -89,16 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public static class howto{
-        protected static void how(){
-            OpenAICompletionClient.makeApiCall(results -> {
-                Gson gson = new Gson();
-                TextCompletionResponse textCompletionResponse = gson.fromJson(results, TextCompletionResponse.class);
-                completedText = textCompletionResponse.getChoices().get(0).getText();
 
-            });
-        }
-    }
 
 
     public class BoredApiTask extends AsyncTask<Void, Void, String> {
@@ -133,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
         super.onPostExecute(result);
         try {
             JSONObject json = new JSONObject(result);
-            String activity = json.getString("activity");
+            activity = json.getString("activity");
             String typeo = json.getString("type");
             String parti = json.getString("participants");
             String price = json.getString("price");
@@ -143,20 +141,25 @@ public class MainActivity extends AppCompatActivity {
             mTextView2.setText(parti);
             mTextView3.setText(price);
             mTextView4.setText(acc);
+            howto.how();
+            OpenAICompletionClient op = new OpenAICompletionClient(activity);
 
             mButton2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    howto.how();
                     LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View popupView = inflater.inflate(R.layout.popup,null);
-                    int width = LinearLayout.LayoutParams.WRAP_CONTENT;
-                    int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+                    int width = LinearLayout.LayoutParams.MATCH_PARENT;
+                    int height = LinearLayout.LayoutParams.MATCH_PARENT;
+                    poph = popupView.findViewById(R.id.textView12);
                     pop=popupView.findViewById(R.id.popup_text);
+                    mProgressBar = popupView.findViewById(R.id.progressBar);
                     boolean focusable = true;
                     final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
                     popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+                    poph.setText(activity);
                     pop.setText(completedText);
+
 
 
                 }
@@ -172,4 +175,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-}}
+}
+
+    public static class howto{
+        protected static void how(){
+            OpenAICompletionClient.makeApiCall(results -> {
+                mProgressBar.setVisibility(View.VISIBLE);
+                Gson gson = new Gson();
+                TextCompletionResponse textCompletionResponse = gson.fromJson(results, TextCompletionResponse.class);
+                completedText = textCompletionResponse.getChoices().get(0).getText();
+                mProgressBar.setVisibility(View.GONE);
+
+            });
+        }
+    }
+}
