@@ -27,10 +27,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+
 import com.theokanning.openai.*;
 import com.theokanning.openai.completion.CompletionRequest;
 
-
+import okio.AsyncTimeout;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -41,8 +43,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextView2;
     private TextView mTextView3;
     private TextView mTextView4;
-    private TextView poph;
-    private TextView pop;
+    private static TextView poph;
+    private static TextView pop;
     private static String activity;
 
 
@@ -51,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_main);
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         final Vibrator vib = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -140,11 +144,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private class howto extends AsyncTask<String, Void, String> {
+    private static class howto extends AsyncTask<String, Void, String> {
 
         @Override
         protected String doInBackground(String... params) {
-            OpenAiService service = new OpenAiService("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");
+            OpenAiService service = new OpenAiService("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",100);
             CompletionRequest completionRequest = CompletionRequest.builder()
                     .prompt("How to"+activity+"in 5 steps")
                     .model("text-davinci-003")
