@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            OpenAiService service = new OpenAiService("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",100);
+            OpenAiService service = new OpenAiService("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",0);
             CompletionRequest completionRequest = CompletionRequest.builder()
                     .prompt("How to"+activity+"in 5 steps")
                     .model("text-davinci-003")

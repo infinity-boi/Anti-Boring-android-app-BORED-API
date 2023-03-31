@@ -61,7 +61,7 @@
                 android:fontFamily="@font/montserrat"
                 android:text="Click on New task button!"
                 android:textColor="#000000"
-                android:textSize="48sp" />
+                android:textSize="40sp" />
 
             <Button
                 android:id="@+id/button2"
