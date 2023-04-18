@@ -7,11 +7,6 @@
     android:background="@drawable/iphone_14___2__1_"
     tools:context=".MainActivity">
 
-
-
-
-
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="700dp"
@@ -26,15 +21,10 @@
         app:contentPaddingLeft="20dp"
         app:contentPaddingRight="20dp"
         app:contentPaddingTop="30dp"
-
-
         app:flow_verticalAlign="center"
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="15dp">
-
-
-
 
         <TextView
             android:id="@+id/textView2"
@@ -42,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:fontFamily="@font/montserrat_light"
-            android:text="TASK"
+            android:text="@string/task"
             android:textColor="#F70059"
             android:textSize="20sp" />
 
@@ -59,17 +49,30 @@
                 android:layout_marginTop="62dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Click on New task button!"
+                android:text="@string/new_button"
                 android:textColor="#000000"
                 android:textSize="40sp" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="wrap_content"
+            <TableRow
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="32dp"
-                android:padding="12dp"
-                android:text="Learn how" />
+                android:layout_marginBottom="20dp">
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:padding="12dp"
+                    android:text="@string/learnHow" />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:id="@+id/switch1"
+                    android:layout_width="153dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_marginEnd="5dp"
+                    android:text="@string/useAI"
+                    android:textSize="16sp" />
+            </TableRow>
 
             <TableLayout
                 android:id="@+id/tableLayout"
@@ -89,7 +92,7 @@
                         android:layout_column="1"
                         android:width="100dp"
                         android:fontFamily="@font/montserrat_light"
-                        android:text="TYPE"
+                        android:text="@string/type"
                         android:textColor="#F70059"
                         android:textSize="20sp" />
 
@@ -116,7 +119,7 @@
                         android:layout_column="1"
                         android:width="120dp"
                         android:fontFamily="@font/montserrat_light"
-                        android:text="PARTICIPANTS"
+                        android:text="@string/participants"
                         android:textColor="#F70059"
                         android:textSize="20sp" />
 
@@ -143,7 +146,7 @@
                         android:layout_column="1"
                         android:width="100dp"
                         android:fontFamily="@font/montserrat_light"
-                        android:text="PRICE"
+                        android:text="@string/price"
                         android:textColor="#F70059"
                         android:textSize="20sp" />
 
@@ -170,7 +173,7 @@
                         android:layout_column="1"
                         android:width="100dp"
                         android:fontFamily="@font/montserrat_light"
-                        android:text="ACCESIBILITY"
+                        android:text="@string/access"
                         android:textColor="#F70059"
                         android:textSize="20sp" />
 
@@ -189,6 +192,7 @@
 
             </TableLayout>
 
+
         </LinearLayout>
 
 
@@ -197,24 +201,20 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <Button
-            android:id="@+id/button"
-            android:layout_width="140dp"
-            android:layout_height="140dp"
-            android:layout_marginBottom="20dp"
-            android:background="@drawable/buttonr"
-            android:text="New Task"
-            android:textAlignment="center"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/button"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/buttonr"
+        android:text="@string/newTask"
+        android:textAlignment="center"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 
