@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         mTextView2 = findViewById(R.id.textView6);
         mTextView3 = findViewById(R.id.textView8);
         mTextView4 = findViewById(R.id.textView10);
+        // LinearLayout mText0 = findViewById(R.id.);
         mSwitch1 = findViewById(R.id.switch1);
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup, null);
@@ -66,9 +67,7 @@ public class MainActivity extends AppCompatActivity {
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
         poph = popupView.findViewById(R.id.textView12);
         pop = popupView.findViewById(R.id.popup_text);
-        boolean focusable = true;
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, true);
-
         mButton.setOnClickListener(view -> {
             new BoredApiTask().execute();
             vib.vibrate(80);
@@ -118,7 +117,13 @@ public class MainActivity extends AppCompatActivity {
                 String typeo = json.getString("type");
                 String parti = json.getString("participants");
                 String price = json.getString("price");
+                Double priceInt = Double.parseDouble(price);
+                priceInt *= 1500;
+                price = "₹"+ priceInt;
                 String acc = json.getString("accessibility");
+                Double accInt = Double.parseDouble(acc);
+                accInt *=100;
+                acc = accInt + "%";
                 mTextView.setText(activity);
                 mTextView1.setText(typeo);
                 mTextView2.setText(parti);
@@ -135,19 +140,21 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            OpenAiService service = new OpenAiService("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",0);
+            String apiKey = "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";
+            OpenAiService service = new OpenAiService(apiKey,10);
             CompletionRequest completionRequest = CompletionRequest.builder()
                     .prompt("How to"+activity+"in 5 steps")
                     .model("text-davinci-003")
                     .temperature(0.3)
-                    .maxTokens(400)
+                    .maxTokens(100)
                     .topP(1.0)
                     .frequencyPenalty(0.0)
                     .presencePenalty(0.0)
                     .echo(false)
                     .build();
 
-            return service.createCompletion(completionRequest).getChoices().get(0).getText();
+            String arr = service.createCompletion(completionRequest).getChoices().get(0).toString();
+            return arr;
         }
 
         @Override
@@ -157,6 +164,5 @@ public class MainActivity extends AppCompatActivity {
             pop.setText(completedTexts);
         }
     }
-
 }
 
