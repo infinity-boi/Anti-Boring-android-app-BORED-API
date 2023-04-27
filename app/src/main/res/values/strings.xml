@@ -23,5 +23,5 @@
     <string name="access">ACCESSIBILITY</string>
     <string name="newTask">New Task</string>
     <string name="error">Error</string>
-    <string name="useAI">Use OpenAI</string>
+    <string name="useAI">Use OpenAI  </string>
 </resources>

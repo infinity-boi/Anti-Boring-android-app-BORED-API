@@ -105,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
             } catch (IOException e) {
                 Log.e("MainActivity", "Error: " + e.getMessage());
             }
+
             return null;
         }
 
@@ -140,10 +141,10 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String apiKey = "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";
-            OpenAiService service = new OpenAiService(apiKey,10);
+            String apiKey = "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";
+            OpenAiService service = new OpenAiService(apiKey, 5000);
             CompletionRequest completionRequest = CompletionRequest.builder()
-                    .prompt("How to"+activity+"in 5 steps")
+                    .prompt("How to "+activity+" in 5 steps")
                     .model("text-davinci-003")
                     .temperature(0.3)
                     .maxTokens(100)
