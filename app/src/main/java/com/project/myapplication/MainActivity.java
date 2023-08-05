@@ -141,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(String... params) {
-            String apiKey = "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";
+            String apiKey = "<OPEN AI API KEY HERE>";
             OpenAiService service = new OpenAiService(apiKey, 5000);
             CompletionRequest completionRequest = CompletionRequest.builder()
                     .prompt("How to "+activity+" in 5 steps")
