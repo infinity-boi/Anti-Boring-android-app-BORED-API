@@ -1,8 +1,8 @@
 # Anti-Boring App (Android App)
 
 ## Team-Member :
-- Aayush Kumar
-- Gourav Singh
+- Aayush Kumar [click here](https://github.com/aayushhk)
+- Gourav Singh [click here](https://github.com/infinity-boi)
   
 ## Problem : 
 We thought of a situation when a person has nothing to do (due to lack of responsibility 👀) resulting in boredom in life.
