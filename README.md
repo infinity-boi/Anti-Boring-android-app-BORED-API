@@ -1,24 +1,24 @@
-## Anti-Boring App (Android App)
+# Anti-Boring App (Android App)
 
-# Team-Member :
+## Team-Member :
 - Aayush Kumar
 - Gourav Singh
   
-# Problem : 
+## Problem : 
 We thought of a situation when a person has nothing to do (due to lack of responsibility 👀) resulting in boredom in life.
 
-# Solution :
+## Solution :
 We came up with the idea of building Anti-Boring App to provide such user with random tasks to perform.It is an android
 application written in Java that uses BoredAPI to get random tasks and display it on screen with details like availability, cost,
 type of activity, etc.
 
-# Benefits : 
+## Benefits : 
 - Reduces laziness
 - Boosts Happiness
 - Fights depression
   
-# Features : 
+## Features : 
 - Random Task on one click
 - Search button to search for steps to complete that task using either openAI api or browser search.
   
-# Programming Language : Java
+## Programming Language : Java
